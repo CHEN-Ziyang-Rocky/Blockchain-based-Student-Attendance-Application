@@ -33,7 +33,55 @@
   http://localhost:3001/api-docs/
   ```
 
-  
+
+### Docker
+
+```sh
+# Build the image
+$ docker build . -t naivecoin
+
+# Run naivecoin in a docker
+$ ./dockerExec.sh
+
+# Run naivecoin in a docker using port 3002
+$ ./dockerExec.sh -p 3002
+
+# Run naivecoin in a docker options
+$ ./dockerExec.sh -h
+Usage: ./dockerExec.sh -a HOST -p PORT -l LOG_LEVEL -e PEERS -n NAME
+
+# Run docker-compose with 3 nodes
+$ docker-compose up
+```
+
+### Client
+
+```sh
+# Command-line options
+$ node bin/naivecoin.js -h
+Usage: bin\naivecoin.js [options]
+
+Options:
+  -a, --host       Host address. (localhost by default)
+  -p, --port       HTTP port. (3001 by default)
+  -l, --log-level  Log level (7=dir, debug, time and trace, 6=log and info,
+                   4=warn, 3=error, assert, 6 by default).
+  --peers          Peers list.                                           [array]
+  --name           Node name/identifier.
+  -h, --help       Show help                                           [boolean]
+```
+
+### Development
+
+```sh
+# Cloning repository
+$ git clone git@github.com:conradoqg/naivecoin.git
+$ cd naivecoin
+$ npm install
+
+# Testing
+$ npm test
+```
 
 
 
