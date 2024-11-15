@@ -521,6 +521,53 @@
                 }
             }
         },
+        "/operator/registerStudent": {
+            "post": {
+                "tags": [
+                    "operator"
+                ],
+                "summary": "Register a new student",
+                "description": "Registers a new student by creating a wallet and storing the public key on the blockchain.",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Student registration details",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "studentID": {
+                                    "type": "string",
+                                    "description": "The student ID for the new student"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "description": "The password to create the wallet for the student"
+                                }
+                            },
+                            "required": ["studentID", "password"]
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Student registered successfully",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "studentID": { "type": "string" },
+                                "walletID": { "type": "string" },
+                                "publicKey": { "type": "string" }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input data"
+                    }
+                }
+            }
+        },        
         "/node/peers": {
             "get": {
                 "tags": [
