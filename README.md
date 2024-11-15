@@ -115,9 +115,39 @@ $ npm test
 
 
 
-问题：
 
-1. 第一个人注册之后需要自己的 student ID 和 public key 放到区块链上，是谁来确认这个transaction，是不是第一个人就需要自己将其打包，放到区块链上。
-2. 老师是不是和学生一样需要注册，如果需要的话，是否要在区块链上用自己的 event id 和 public key 注册到区块链上。
-3. 老师生成的event id，可不可以看成是课程的代码（只是这个是随机的数）
-4. 一个老师可不可以生成多个event id
+
+## Start Our Project:
+
+npx create-react-app client
+
+
+
+npm install react-router-dom
+
+npm install @ant-design/icons
+
+npm install antd react-redux
+
+npm install @reduxjs/toolkit
+
+- Run a node:
+
+  ```sh
+  node bin/naivecoin.js -p 3001 --name 1
+  ```
+
+- Run the second node and add peers:
+
+  ```sh
+  node bin/naivecoin.js -p 3002 --name 2 --peers http://localhost:3001
+  ```
+
+- Run the Client:
+
+  ```
+  cd client
+  npm start
+  ```
+
+  
