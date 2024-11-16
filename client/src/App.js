@@ -1,13 +1,18 @@
 // src/App.js
 
 import React from 'react';
-import RegistrationForm from './components/RegistrationForm';
+import { RouterProvider } from 'react-router-dom';
+import RegistrationForm from './pages/login/RegistrationForm';
+import Sidebar from './components/Sidebar';
+import './App.css';
+import router from './router';
 
 function App() {
   return (
-    <div>
-      <RegistrationForm />
-    </div>
+    <RegistrationForm />
+    /*
+      <RouterProvider router={router} />
+    */
   );
 }
 
