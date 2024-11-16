@@ -4,7 +4,7 @@ import React from 'react';
 const Home = () => {
     return (
         <div>
-            <h1>欢迎来到 Home 页面！</h1>
+            <h1 style={{ color: '#000' }}>欢迎来到 Home 页面！</h1>
         </div>
     );
 };

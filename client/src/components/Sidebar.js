@@ -1,25 +1,48 @@
 // src/components/Sidebar.js
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Sidebar.css'; // 为侧边栏添加样式
+import { NavLink } from 'react-router-dom';
+import './Sidebar.css'; // For sidebar styling
 
 const Sidebar = () => {
     return (
         <div className="sidebar">
-            <h2>功能选择</h2>
+            <h2>Student Attendance</h2>
             <ul>
                 <li>
-                    <Link to="/">Student Information Registration</Link>
+                    <NavLink to="/" end activeClassName="active">
+                        Home
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/attendance">Attendance Information Recording</Link>
+                    <NavLink to="/register" activeClassName="active">
+                        Student Information Registration
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/mint">Mint</Link>
+                    <NavLink to="/attendance" activeClassName="active">
+                        Attendance Information Recording
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/query">Record Querying</Link>
+                    <NavLink to="/mint" activeClassName="active">
+                        Mint
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/query" activeClassName="active">
+                        Record Querying
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/blockchain" activeClassName="active">
+                        Blockchain
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/transactions/unconfirmed" activeClassName="active">
+                        Unconfirmed Transactions
+                    </NavLink>
                 </li>
             </ul>
         </div>

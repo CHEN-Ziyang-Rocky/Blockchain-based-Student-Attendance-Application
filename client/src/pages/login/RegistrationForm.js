@@ -1,29 +1,24 @@
-//
+// src/pages/login/RegistrationForm.js
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import './RegistrationForm.css'; // 引入 CSS 文件
+import { Form, Input, Button, Alert, Typography } from 'antd';
+import './RegistrationForm.css';
+
+const { Title } = Typography;
 
 const RegistrationForm = () => {
-    const [studentID, setStudentID] = useState('');
-    const [password, setPassword] = useState('');
     const [registrationResult, setRegistrationResult] = useState(null);
     const [error, setError] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const onFinish = async (values) => {
         setIsSubmitting(true);
         setError(null);
         setRegistrationResult(null);
 
         try {
-            // 替换为你的后端API地址
-            const response = await axios.post('http://localhost:3001/operator/registerStudent', {
-                studentID,
-                password,
-            });
-
+            const response = await axios.post('http://localhost:3001/operator/registerStudent', values);
             setRegistrationResult(response.data);
         } catch (err) {
             console.error(err);
@@ -35,42 +30,55 @@ const RegistrationForm = () => {
 
     return (
         <div className="container">
-            <h2>用户注册</h2>
-            <form onSubmit={handleSubmit} className="form">
-                <div className="form-group">
-                    <label htmlFor="studentID">学生ID:</label>
-                    <input
-                        type="text"
-                        id="studentID"
-                        value={studentID}
-                        onChange={(e) => setStudentID(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">密码:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? '注册中...' : '注册'}
-                </button>
-            </form>
+            <Title level={2} style={{ textAlign: 'center', color: '#000' }}>
+                Registration
+            </Title>
+            <Form onFinish={onFinish} className="form">
+                <Form.Item
+                    label="StudentID"
+                    name="studentID"
+                    rules={[{ required: true, message: 'Please enter your ID' }]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    label="Password"
+                    name="password"
+                    rules={[{ required: true, message: 'Please enter your password' }]}
+                >
+                    <Input.Password />
+                </Form.Item>
+                <Form.Item>
+                    <Button type="primary" htmlType="submit" block loading={isSubmitting}>
+                        Register
+                    </Button>
+                </Form.Item>
+            </Form>
 
-            {error && <div className="error">{error}</div>}
+            {error && (
+                <Alert message="Error" description={error} type="error" showIcon style={{ marginTop: 20 }} />
+            )}
 
             {registrationResult && (
-                <div className="result">
-                    <h3>注册成功！</h3>
-                    <p><strong>学生ID:</strong> {registrationResult.studentID}</p>
-                    <p><strong>钱包ID:</strong> {registrationResult.walletID}</p>
-                    <p><strong>公钥:</strong> {registrationResult.publicKey}</p>
-                </div>
+                <Alert
+                    message="Registration Successful"
+                    description={
+                        <div>
+                            <p>
+                                <strong style={{ color: '#000' }}>Student ID:</strong> {registrationResult.studentID}
+                            </p>
+                            <p>
+                                <strong style={{ color: '#000' }}>Wallet ID:</strong> {registrationResult.walletID}
+                            </p>
+                            <p>
+                                <strong style={{ color: '#000' }}>Public Key</strong> {registrationResult.publicKey}
+                            </p>
+                        </div>
+                    }
+                    type="success"
+                    showIcon
+                    style={{ marginTop: 20 }}
+                />
             )}
         </div>
     );

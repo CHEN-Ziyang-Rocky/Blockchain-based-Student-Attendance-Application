@@ -151,3 +151,16 @@ npm install @reduxjs/toolkit
   ```
 
   
+
+
+
+## 学习：
+
+前后端交互的时候使用
+
+前后端依赖不要搞混，当前端要添加依赖时，需要cd 到前端文件，然后npm install。
+
+npm install axios timeago.js react-icons
+
+npm install bulma
+
