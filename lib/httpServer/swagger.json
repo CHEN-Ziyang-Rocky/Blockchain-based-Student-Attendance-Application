@@ -537,7 +537,7 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "studentID": {
+                                "User_ID": {
                                     "type": "string",
                                     "description": "The student ID for the new student"
                                 },
@@ -546,7 +546,7 @@
                                     "description": "The password to create the wallet for the student"
                                 }
                             },
-                            "required": ["studentID", "password"]
+                            "required": ["User_ID", "password"]
                         }
                     }
                 ],
@@ -556,7 +556,7 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "studentID": { "type": "string" },
+                                "User_ID": { "type": "string" },
                                 "walletID": { "type": "string" },
                                 "publicKey": { "type": "string" }
                             }
@@ -584,7 +584,7 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "studentId": {
+                                "User_ID": {
                                     "type": "string",
                                     "description": "The student's ID",
                                     "example": "student123"
@@ -605,7 +605,7 @@
                                     "example": "signature123"
                                 }
                             },
-                            "required": ["studentId", "eventId", "timestamp", "signature"]
+                            "required": ["User_ID", "eventId", "timestamp", "signature"]
                         }
                     }
                 ],

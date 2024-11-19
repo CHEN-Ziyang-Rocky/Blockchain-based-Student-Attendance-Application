@@ -1,6 +1,6 @@
 const readline = require('readline');
 const path = require('path');
-const CryptoEdDSAUtil = require(path.resolve('/Users/yechenwei/Desktop/naivecoin/lib/util/cryptoEdDSAUtil.js'));
+const CryptoEdDSAUtil = require(path.resolve('../lib/util/cryptoEdDSAUtil.js'));
 
 const fs = require('fs');
 
@@ -9,11 +9,11 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question("Enter Student ID: ", (studentId) => {
+rl.question("Enter Student ID: ", (User_ID) => {
     rl.question("Enter Event ID: ", (eventId) => {
         rl.question("Enter your Private Key: ", (privateKey) => {
             const timestamp = Date.now(); 
-            const message = `${studentId}${eventId}${timestamp}`;
+            const message = `${User_ID}${eventId}${timestamp}`;
             const messageHash = CryptoEdDSAUtil.hashMessage(message);
 
             console.log("Timestamp:", timestamp);
@@ -22,7 +22,7 @@ rl.question("Enter Student ID: ", (studentId) => {
             console.log("Generated Signature:", signature);
 
             const attendanceData = {
-                studentId: studentId,
+                User_ID: User_ID,
                 eventId: eventId,
                 timestamp: timestamp,
                 messageHash: messageHash,
