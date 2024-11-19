@@ -71,7 +71,7 @@ const RegistrationForm = () => {
                                 <strong style={{ color: '#000' }}>Wallet ID:</strong> {registrationResult.walletID}
                             </p>
                             <p>
-                                <strong style={{ color: '#000' }}>Public Key</strong> {registrationResult.publicKey}
+                                <strong style={{ color: '#000' }}>Public Key:</strong> {registrationResult.publicKey}
                             </p>
                         </div>
                     }
