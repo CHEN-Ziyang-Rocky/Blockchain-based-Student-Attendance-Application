@@ -6,6 +6,9 @@ import RegistrationForm from '../pages/login/RegistrationForm';
 import Home from '../pages/home/Home';
 import Blockchain from '../pages/blockchain/Blockchain';
 import UnconfirmedTransactions from '../pages/transactions/UnconfirmedTransactions';
+import Mint from '../pages/mint/Mint';
+import Attendance from '../pages/attendance/Attendance';
+import Querying from '../pages/query/Querying';
 // Import other pages as needed
 
 const router = createBrowserRouter([
@@ -21,9 +24,6 @@ const router = createBrowserRouter([
                 path: 'register',
                 element: <RegistrationForm />,
             },
-
-            // Add other routes here
-            /*
             {
                 path: 'attendance',
                 element: <Attendance />,
@@ -34,9 +34,8 @@ const router = createBrowserRouter([
             },
             {
                 path: 'query',
-                element: <RecordQuery />,
+                element: <Querying />,
             },
-            */
             {
                 path: '/blockchain',
                 element: <Blockchain />

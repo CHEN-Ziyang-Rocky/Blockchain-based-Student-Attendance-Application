@@ -27,63 +27,20 @@
   node bin/naivecoin.js -p 3002 --name 2 --peers http://localhost:3001
   ```
 
+- Run the Client:
+
+  ```
+  cd client
+  npm start
+  ```
+
 - Access the swagger API:
 
-  ```shell
+  ```
   http://localhost:3001/api-docs/
   ```
 
-
-### Docker
-
-```sh
-# Build the image
-$ docker build . -t naivecoin
-
-# Run naivecoin in a docker
-$ ./dockerExec.sh
-
-# Run naivecoin in a docker using port 3002
-$ ./dockerExec.sh -p 3002
-
-# Run naivecoin in a docker options
-$ ./dockerExec.sh -h
-Usage: ./dockerExec.sh -a HOST -p PORT -l LOG_LEVEL -e PEERS -n NAME
-
-# Run docker-compose with 3 nodes
-$ docker-compose up
-```
-
-### Client
-
-```sh
-# Command-line options
-$ node bin/naivecoin.js -h
-Usage: bin\naivecoin.js [options]
-
-Options:
-  -a, --host       Host address. (localhost by default)
-  -p, --port       HTTP port. (3001 by default)
-  -l, --log-level  Log level (7=dir, debug, time and trace, 6=log and info,
-                   4=warn, 3=error, assert, 6 by default).
-  --peers          Peers list.                                           [array]
-  --name           Node name/identifier.
-  -h, --help       Show help                                           [boolean]
-```
-
-### Development
-
-```sh
-# Cloning repository
-$ git clone git@github.com:conradoqg/naivecoin.git
-$ cd naivecoin
-$ npm install
-
-# Testing
-$ npm test
-```
-
-
+  
 
 ## 项目流程：
 
@@ -112,55 +69,3 @@ $ npm test
 ### Record querying
 
 教师可以查询特定学生的整个学期或几个星期出勤情况，或一个班级的出勤名单。
-
-
-
-
-
-## Start Our Project:
-
-npx create-react-app client
-
-
-
-npm install react-router-dom
-
-npm install @ant-design/icons
-
-npm install antd react-redux
-
-npm install @reduxjs/toolkit
-
-- Run a node:
-
-  ```sh
-  node bin/naivecoin.js -p 3001 --name 1
-  ```
-
-- Run the second node and add peers:
-
-  ```sh
-  node bin/naivecoin.js -p 3002 --name 2 --peers http://localhost:3001
-  ```
-
-- Run the Client:
-
-  ```
-  cd client
-  npm start
-  ```
-
-  
-
-
-
-## 学习：
-
-前后端交互的时候使用
-
-前后端依赖不要搞混，当前端要添加依赖时，需要cd 到前端文件，然后npm install。
-
-npm install axios timeago.js react-icons
-
-npm install bulma
-
