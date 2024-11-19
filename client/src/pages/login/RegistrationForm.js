@@ -35,8 +35,8 @@ const RegistrationForm = () => {
             </Title>
             <Form onFinish={onFinish} className="form">
                 <Form.Item
-                    label="StudentID"
-                    name="studentID"
+                    label="User_ID"
+                    name="User_ID"
                     rules={[{ required: true, message: 'Please enter your ID' }]}
                 >
                     <Input />
@@ -65,7 +65,7 @@ const RegistrationForm = () => {
                     description={
                         <div>
                             <p>
-                                <strong style={{ color: '#000' }}>Student ID:</strong> {registrationResult.studentID}
+                                <strong style={{ color: '#000' }}>Student ID:</strong> {registrationResult.User_ID}
                             </p>
                             <p>
                                 <strong style={{ color: '#000' }}>Wallet ID:</strong> {registrationResult.walletID}
