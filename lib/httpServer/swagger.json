@@ -609,42 +609,23 @@
                     "201": {
                         "description": "Attendance signed and recorded successfully",
                         "schema": {
-                            "type": "object",
+                            "type": "attendance",
                             "properties": {
-                                "message": {
+                                "studentId": {
                                     "type": "string",
-                                    "example": "Attendance signed and recorded successfully"
+                                    "example": "student123"
                                 },
-                                "transactionId": {
+                                "eventId": {
                                     "type": "string",
-                                    "description": "Transaction ID of the attendance record",
-                                    "example": "student123_COMP4141_1638288000000"
+                                    "example": "COMP4141"
                                 },
-                                "attendanceData": {
-                                    "type": "object",
-                                    "description": "Details of the attendance record",
-                                    "properties": {
-                                        "studentId": {
-                                            "type": "string",
-                                            "example": "student123"
-                                        },
-                                        "eventId": {
-                                            "type": "string",
-                                            "example": "COMP4141"
-                                        },
-                                        "timestamp": {
-                                            "type": "integer",
-                                            "example": 1638288000000
-                                        },
-                                        "messageHash": {
-                                            "type": "string",
-                                            "example": "4a7d1ed414474e4033ac29ccb8653d9b"
-                                        },
-                                        "signature": {
-                                            "type": "string",
-                                            "example": "5e88489f2ba6c671e06c30145a4b872..."
-                                        }
-                                    }
+                                "timestamp": {
+                                    "type": "integer",
+                                    "example": 1638288000000
+                                },
+                                "signature": {
+                                    "type": "string",
+                                    "example": "5e88489f2ba6c671e06c30145a4b872..."
                                 }
                             }
                         }
