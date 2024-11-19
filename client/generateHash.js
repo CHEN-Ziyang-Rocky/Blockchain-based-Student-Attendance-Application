@@ -11,23 +11,28 @@ const rl = readline.createInterface({
 
 rl.question("Enter Student ID: ", (studentId) => {
     rl.question("Enter Event ID: ", (eventId) => {
-        const timestamp = Date.now(); 
-        const message = `${studentId}${eventId}${timestamp}`;
-        const messageHash = CryptoEdDSAUtil.hashMessage(message);
+        rl.question("Enter your Private Key: ", (privateKey) => {
+            const timestamp = Date.now(); 
+            const message = `${studentId}${eventId}${timestamp}`;
+            const messageHash = CryptoEdDSAUtil.hashMessage(message);
 
-        console.log("Generated hash (for signing):", messageHash);
-        console.log("Timestamp:", timestamp);
+            console.log("Timestamp:", timestamp);
+            
+            const signature = CryptoEdDSAUtil.signHash(privateKey, messageHash);
+            console.log("Generated Signature:", signature);
 
-        const attendanceData = {
-            studentId: studentId,
-            eventId: eventId,
-            timestamp: timestamp,
-            messageHash: messageHash
-        };
+            const attendanceData = {
+                studentId: studentId,
+                eventId: eventId,
+                timestamp: timestamp,
+                messageHash: messageHash,
+                signature: signature 
+            };
 
-        fs.writeFileSync('attendanceData.json', JSON.stringify(attendanceData));
-        console.log('Attendance data saved to attendanceData.json');
-
-        rl.close();
+            fs.writeFileSync('attendanceData.json', JSON.stringify(attendanceData, null, 2));
+            console.log('Attendance data saved to attendanceData.json');
+            
+            rl.close();
+        });
     });
 });
