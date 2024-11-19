@@ -1,1 +1,7 @@
-{"studentId":"12121213d","eventId":"COMP4141","timestamp":1731669696250,"messageHash":"2539306de439dae004867801d3d7509ac54c0c1d90c9ac028ec113ab3ff081b9"}
+{
+  "studentId": "11221111d",
+  "eventId": "comp4431",
+  "timestamp": 1732005542350,
+  "messageHash": "87ecd0abf2bddd0c9514ea0da73815d0536e3582decbf355c39cf4527ac5c5b2",
+  "signature": "f7330ddb78fc136a0ec0e3eb8be22e9c6c5b23a7de6fee92dbdc34a48c6239cf31deca399c2795b91374836e9a8b655b5d8b7c44e551bf04fa0576a7e5e01301"
+}
