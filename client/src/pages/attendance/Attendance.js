@@ -1,4 +1,3 @@
-// /Users/chenziyang/Desktop/E-payment/Project/naivecoin/client/src/pages/attendance/Attendance.js
 import React, { useState } from "react";
 import axios from "axios";
 import "./Attendance.css";
@@ -29,9 +28,22 @@ const Attendance = () => {
             });
 
             const { message, transactionId, attendanceData } = response.data;
+
             setResponseMessage(message);
             setTransactionId(transactionId);
-            setAttendanceDetails(attendanceData);
+
+            if (attendanceData) {
+                const safeAttendanceData = {
+                    studentId: attendanceData.studentId || "",
+                    eventId: attendanceData.eventId || "",
+                    timestamp: attendanceData.timestamp || "",
+                    messageHash: attendanceData.messageHash ? String(attendanceData.messageHash) : "",
+                    signature: attendanceData.signature ? String(attendanceData.signature) : "",
+                };
+                setAttendanceDetails(safeAttendanceData);
+            } else {
+                setAttendanceDetails(null);
+            }
         } catch (err) {
             setError(
                 err.response?.data?.message || "An error occurred while recording attendance."
@@ -101,7 +113,7 @@ const Attendance = () => {
                             </p>
                             <p>
                                 <strong>Timestamp:</strong>{" "}
-                                {new Date(attendanceDetails.timestamp).toLocaleString()}
+                                {new Date(parseInt(attendanceDetails.timestamp)).toLocaleString()}
                             </p>
                             <p>
                                 <strong>Message Hash:</strong> {attendanceDetails.messageHash}

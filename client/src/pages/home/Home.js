@@ -5,7 +5,7 @@ import './Home.css';
 const Home = () => {
     return (
         <div className="home-container">
-            <h1>Contributors:</h1>
+            <h1 style={{ color: '#000' }}>Contributors:</h1>
             <table className="contributors-table">
                 <thead>
                     <tr>
@@ -48,10 +48,10 @@ const Home = () => {
                 </tbody>
             </table>
 
-            <h2>项目流程：</h2>
+            <h2 style={{ color: '#000' }}>Project Procedures</h2>
 
             <div className="project-section">
-                <h3>Student information registration</h3>
+                <h3 style={{ color: '#000' }}>Student information registration</h3>
                 <ol>
                     <li>学生生成一个 key pair (public key & secret key)。public key = student identity（公钥）。</li>
                     <li>学生需要首先用自己的 student ID 和 public key 注册到区块链上。</li>
@@ -60,7 +60,7 @@ const Home = () => {
             </div>
 
             <div className="project-section">
-                <h3>Attendance information recording</h3>
+                <h3 style={{ color: '#000' }}>Attendance information recording</h3>
                 <ol>
                     <li>
                         学生使用他们的 secret key，签署 attendance certificate (student ID, event ID, and timestamp) 使用 ECDSA。
@@ -80,7 +80,7 @@ const Home = () => {
             </div>
 
             <div className="project-section">
-                <h3>Mint</h3>
+                <h3 style={{ color: '#000' }}>Mint</h3>
                 <ol>
                     <li>其他 node 收到 Transaction 后，使用 public key 验证其 Transaction 里 attendance certificate 的 signature，验证成功放入 pending pool 中。</li>
                     <li>学生可以将 pending pool 中的 transaction 按照优先级选择一些 transaction 进行打包。</li>
@@ -90,7 +90,7 @@ const Home = () => {
             </div>
 
             <div className="project-section">
-                <h3>Record querying</h3>
+                <h3 style={{ color: '#000' }}>Record querying</h3>
                 <p>教师可以查询特定学生的整个学期或几个星期出勤情况，或一个班级的出勤名单。</p>
             </div>
         </div>
