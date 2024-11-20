@@ -16,7 +16,7 @@ const Sidebar = () => {
                 </li>
                 <li>
                     <NavLink to="/register" activeClassName="active">
-                        Student Information Registration
+                        Information Registration
                     </NavLink>
                 </li>
                 <li>
@@ -36,7 +36,12 @@ const Sidebar = () => {
                 </li>
                 <li>
                     <NavLink to="/attendance" activeClassName="active">
-                        Attendance Information Recording
+                        Record Attendance
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/event" activeClassName="active">
+                        Teacher Create Event ID
                     </NavLink>
                 </li>
                 <li>

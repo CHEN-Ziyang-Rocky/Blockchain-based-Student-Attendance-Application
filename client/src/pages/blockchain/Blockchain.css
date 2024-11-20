@@ -21,23 +21,23 @@
     background-color: #ccc;
 }
 
-.is-primary {
-    background-color: #3498db;
-    color: #fff;
-}
-
-.is-warning {
-    background-color: #f1c40f;
-    color: #fff;
-}
-
 .is-danger {
     background-color: #e74c3c;
     color: #fff;
 }
 
-.is-info {
-    background-color: #1abc9c;
+.is-success {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.is-blue {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.is-yellow {
+    background-color: #f1c40f;
     color: #fff;
 }
 
@@ -58,13 +58,11 @@
     width: calc(25% - 20px);
     box-sizing: border-box;
     color: #000;
-    /* Set text color to black */
 }
 
 .block h3,
 .block h2 {
     color: #000;
-    /* Ensure headers and paragraphs are black */
 }
 
 .block-header h3 {
@@ -88,10 +86,8 @@
     position: absolute;
     z-index: 1;
     bottom: 125%;
-    /* Position above the text */
     left: 50%;
     margin-left: -100px;
-    /* Center the tooltip */
     opacity: 0;
     transition: opacity 0.3s;
 }
