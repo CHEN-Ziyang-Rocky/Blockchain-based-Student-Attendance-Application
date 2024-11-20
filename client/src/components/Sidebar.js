@@ -30,6 +30,11 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to="/getSecretKey" activeClassName="active">
+                        Get the Secret Key
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to="/attendance" activeClassName="active">
                         Attendance Information Recording
                     </NavLink>
