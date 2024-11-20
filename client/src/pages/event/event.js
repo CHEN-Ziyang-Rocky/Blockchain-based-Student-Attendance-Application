@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./Attendance.css";
+import "./event.css";
 
-const Attendance = () => {
+const Event = () => {
     const [userID, setUserID] = useState("");
     const [eventID, setEventID] = useState("");
+    const [ddl, setDdl] = useState("");
     const [privateKey, setPrivateKey] = useState("");
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
@@ -17,29 +18,27 @@ const Attendance = () => {
         setError("");
 
         try {
-            const response = await axios.post("http://localhost:3001/operator/attendance", {
+            const response = await axios.post("http://localhost:3001/operator/event", {
                 User_ID: userID,
                 eventID: eventID,
+                ddl: ddl,
                 privateKey: privateKey,
             });
 
-            const { attendanceData, transactionId } = response.data;
-            setMessage(
-                `Attendance recorded successfully! Transaction ID: ${transactionId}\n\nDetails:\n- User ID: ${attendanceData.User_ID}\n- Event ID: ${attendanceData.eventID}\n- Timestamp: ${new Date(attendanceData.timestamp).toLocaleString()}`
-            );
+            setMessage(`Event created successfully! Transaction ID: ${response.data.transactionId}`);
         } catch (err) {
-            setError(err.response?.data?.message || "An error occurred while recording attendance.");
+            setError(err.response?.data?.message || "An error occurred while creating the event.");
         } finally {
             setIsLoading(false);
         }
     };
 
     return (
-        <div className="attendance-container">
-            <h1 style={{ color: '#000' }}>Record Attendance</h1>
-            <form onSubmit={handleSubmit} className="attendance-form">
+        <div className="event-container">
+            <h1 style={{ color: '#000' }}>Create Event</h1>
+            <form onSubmit={handleSubmit} className="event-form">
                 <div className="form-group">
-                    <label htmlFor="userID">User ID:</label>
+                    <label htmlFor="userID">User ID (Teacher):</label>
                     <input
                         type="text"
                         id="userID"
@@ -50,7 +49,7 @@ const Attendance = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="eventID">Event ID:</label>
+                    <label htmlFor="eventID">Enter the Event ID you want to create:</label>
                     <input
                         type="text"
                         id="eventID"
@@ -61,6 +60,17 @@ const Attendance = () => {
                     />
                 </div>
                 <div className="form-group">
+                    <label htmlFor="ddl">Deadline (e.g. 2024/12/02 15:30):</label>
+                    <input
+                        type="text"
+                        id="ddl"
+                        value={ddl}
+                        onChange={(e) => setDdl(e.target.value)}
+                        required
+                        placeholder="Enter deadline (YYYY/MM/DD HH:mm)"
+                    />
+                </div>
+                <div className="form-group">
                     <label htmlFor="privateKey">Private Key:</label>
                     <input
                         type="password"
@@ -68,11 +78,11 @@ const Attendance = () => {
                         value={privateKey}
                         onChange={(e) => setPrivateKey(e.target.value)}
                         required
-                        placeholder="Enter your Private Key"
+                        placeholder="Enter your private key"
                     />
                 </div>
                 <button type="submit" className="submit-button" disabled={isLoading}>
-                    {isLoading ? "Submitting..." : "Submit Attendance"}
+                    {isLoading ? "Creating Event..." : "Create Event"}
                 </button>
             </form>
             {message && <div className="success-message">{message}</div>}
@@ -81,4 +91,4 @@ const Attendance = () => {
     );
 };
 
-export default Attendance;
+export default Event;

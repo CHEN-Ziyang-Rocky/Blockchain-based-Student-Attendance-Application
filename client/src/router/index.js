@@ -12,6 +12,7 @@ import Querying from '../pages/query/Querying';
 import WalletDetails from '../pages/wallet/WalletDetails';
 import WalletList from '../pages/wallet/WalletList';
 import GetSecretKey from '../pages/wallet/GetSecretKey';
+import Event from '../pages/event/event';
 // Import other pages as needed
 
 const router = createBrowserRouter([
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
             {
                 path: 'attendance',
                 element: <Attendance />,
+            },
+            {
+                path: 'event',
+                element: <Event />,
             },
             {
                 path: 'mint',

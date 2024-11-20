@@ -37,10 +37,10 @@ const Blockchain = () => {
 
     const getClassByType = (type) => {
         const classByType = {
-            'regular': 'is-primary',
-            'fee': 'is-warning',
             'reward': 'is-danger',
-            'registration': 'is-info',
+            'registration': 'is-success',
+            'event': 'is-blue',
+            'attendance': 'is-yellow',
         };
         return classByType[type] || '';
     };
@@ -51,10 +51,10 @@ const Blockchain = () => {
                 <h2 className="title" style={{ color: '#000' }}>Blockchain</h2>
                 <div className="tags">
                     <span className="tag">Type</span>
-                    <span className="tag is-primary">Regular</span>
-                    <span className="tag is-warning">Fee</span>
                     <span className="tag is-danger">Reward</span>
-                    <span className="tag is-info">Registration</span>
+                    <span className="tag is-success">Registration</span>
+                    <span className="tag is-blue">Event</span>
+                    <span className="tag is-yellow">Attendance</span>
                 </div>
             </div>
             <hr />
