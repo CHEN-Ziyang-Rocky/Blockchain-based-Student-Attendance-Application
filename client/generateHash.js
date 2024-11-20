@@ -10,10 +10,10 @@ const rl = readline.createInterface({
 });
 
 rl.question("Enter Student ID: ", (User_ID) => {
-    rl.question("Enter Event ID: ", (eventId) => {
+    rl.question("Enter Event ID: ", (eventID) => {
         rl.question("Enter your Private Key: ", (privateKey) => {
             const timestamp = Date.now(); 
-            const message = `${User_ID}${eventId}${timestamp}`;
+            const message = `${User_ID}${eventID}${timestamp}`;
             const messageHash = CryptoEdDSAUtil.hashMessage(message);
 
             console.log("Timestamp:", timestamp);
@@ -23,7 +23,7 @@ rl.question("Enter Student ID: ", (User_ID) => {
 
             const attendanceData = {
                 User_ID: User_ID,
-                eventId: eventId,
+                eventID: eventID,
                 timestamp: timestamp,
                 messageHash: messageHash,
                 signature: signature 
