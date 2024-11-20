@@ -11,6 +11,7 @@ import Attendance from '../pages/attendance/Attendance';
 import Querying from '../pages/query/Querying';
 import WalletDetails from '../pages/wallet/WalletDetails';
 import WalletList from '../pages/wallet/WalletList';
+import GetSecretKey from '../pages/wallet/GetSecretKey';
 // Import other pages as needed
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: 'walletList',
                 element: <WalletList />,
+            },
+            {
+                path: 'getSecretKey',
+                element: <GetSecretKey />,
             },
             {
                 path: 'attendance',
