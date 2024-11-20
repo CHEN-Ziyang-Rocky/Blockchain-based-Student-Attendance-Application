@@ -1,0 +1,121 @@
+/* Attendance.css */
+
+.attendance-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.attendance-container h1 {
+    font-size: 2.5rem;
+    color: #343a40;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.attendance-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    text-align: left;
+    position: relative;
+}
+
+.form-group label {
+    font-size: 1rem;
+    color: #495057;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 8px rgba(128, 189, 255, 0.5);
+    outline: none;
+}
+
+.submit-button {
+    background-color: #28a745;
+    color: white;
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.submit-button:hover:enabled {
+    background-color: #218838;
+}
+
+.success-message {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.error-message {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.attendance-details {
+    margin-top: 20px;
+    background-color: #e2e3e5;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 0.95rem;
+    color: #212529;
+}
+
+.attendance-details p {
+    margin: 5px 0;
+}
+
+.attendance-details strong {
+    color: #343a40;
+}
+
+@media (max-width: 576px) {
+    .attendance-container {
+        padding: 20px;
+    }
+
+    .attendance-container h1 {
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,31 @@
+.wallet-list-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.wallet-list-container h1 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.wallet-list-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.wallet-list-container li {
+    background: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+    color: red;
+    font-size: 1rem;
+}

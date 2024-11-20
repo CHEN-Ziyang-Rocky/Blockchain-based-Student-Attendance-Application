@@ -20,6 +20,16 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to="/walletDetails" activeClassName="active">
+                        Check Wallet Details
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/walletList" activeClassName="active">
+                        Check Wallet List
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to="/attendance" activeClassName="active">
                         Attendance Information Recording
                     </NavLink>
