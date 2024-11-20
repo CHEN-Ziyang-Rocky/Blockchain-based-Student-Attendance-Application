@@ -546,10 +546,7 @@
                                     "description": "The password to create the wallet for the student"
                                 }
                             },
-                            "required": [
-                                "User_ID",
-                                "password"
-                            ]
+                            "required": ["User_ID", "password"]
                         }
                     }
                 ],
@@ -559,15 +556,9 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "User_ID": {
-                                    "type": "string"
-                                },
-                                "walletID": {
-                                    "type": "string"
-                                },
-                                "publicKey": {
-                                    "type": "string"
-                                }
+                                "User_ID": { "type": "string" },
+                                "walletID": { "type": "string" },
+                                "publicKey": { "type": "string" }
                             }
                         }
                     },
@@ -576,7 +567,7 @@
                     }
                 }
             }
-        },
+        }, 
         "/operator/attendance": {
             "post": {
                 "tags": [
@@ -598,7 +589,7 @@
                                     "description": "The student's ID",
                                     "example": "student123"
                                 },
-                                "eventId": {
+                                "eventID": {
                                     "type": "string",
                                     "description": "The event or class ID for which attendance is being recorded",
                                     "example": "COMP4141"
@@ -610,8 +601,8 @@
                                 }
                             },
                             "required": [
-                                "studentId",
-                                "eventId",
+                                "User_ID",
+                                "eventID",
                                 "privateKey"
                             ]
                         }
@@ -623,11 +614,11 @@
                         "schema": {
                             "type": "attendance",
                             "properties": {
-                                "studentId": {
+                                "User_ID": {
                                     "type": "string",
                                     "example": "student123"
                                 },
-                                "eventId": {
+                                "eventID": {
                                     "type": "string",
                                     "example": "COMP4141"
                                 },
@@ -685,6 +676,98 @@
                 }
             }
         },
+        "/operator/event": {
+            "post": {
+                "tags": [
+                    "operator"
+                ],
+                "summary": "Create and sign an event",
+                "description": "Allows a teacher to create and sign an event by submitting their details and a deadline (ddl).",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Details for the event creation",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "User_ID": {
+                                    "type": "string",
+                                    "description": "The teacher's ID",
+                                    "example": "teacher123"
+                                },
+                                "eventID": {
+                                    "type": "string",
+                                    "description": "The unique ID of the event",
+                                    "example": "event456"
+                                },
+                                "ddl": {
+                                    "type": "string",
+                                    "description": "The deadline for the event in YYYY/MM/DD HH:mm format",
+                                    "example": "2024/12/02 15:30"
+                                },
+                                "privateKey": {
+                                    "type": "string",
+                                    "description": "The teacher's private key for signing the event",
+                                    "example": "privateKey123"
+                                }
+                            },
+                            "required": ["User_ID", "eventID", "ddl", "privateKey"]
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Event created and signed successfully",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Event created successfully"
+                                },
+                                "transactionId": {
+                                    "type": "string",
+                                    "description": "The unique ID of the created event transaction",
+                                    "example": "event_123"
+                                },
+                                "timestamp": {
+                                    "type": "integer",
+                                    "description": "The timestamp of the event based on the ddl",
+                                    "example": 1735689599000
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input data",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Invalid input data"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized user",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "User is not authorized to create events"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },                
+
         "/node/peers": {
             "get": {
                 "tags": [
