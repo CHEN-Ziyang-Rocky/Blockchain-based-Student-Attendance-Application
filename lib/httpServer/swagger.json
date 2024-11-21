@@ -221,6 +221,98 @@
                 }
             }
         },
+
+        "/blockchain/transactions/attendance": {
+            "get": {
+                "tags": ["blockchain"],
+                "summary": "Get attendance transactions",
+                "description": "Retrieve attendance transactions filtered by studentId, eventId, and/or a timestamp range.",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "User_ID",
+                        "type": "string",
+                        "description": "The ID of the student",
+                        "required": false,
+                        "example": "12345678"
+                    },
+                    {
+                        "in": "query",
+                        "name": "eventID",
+                        "type": "string",
+                        "description": "The ID of the event",
+                        "required": false,
+                        "example": "COMP1011"
+                    },
+                    {
+                        "in": "query",
+                        "name": "startTime",
+                        "type": "string",
+                        "description": "The start time for filtering in format YYYY-MM-DD HH:mm:ss",
+                        "required": false,
+                        "example": "2024-11-20 00:00:00"
+                    },
+                    {
+                        "in": "query",
+                        "name": "endTime",
+                        "type": "string",
+                        "description": "The start time for filtering in format YYYY-MM-DD HH:mm:ss",
+                        "required": false,
+                        "example": "2024-11-20 00:00:00"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Filtered attendance transactions",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": { "type": "string", "example": "attendance_123456" },
+                                    "type": { "type": "string", "example": "attendance" },
+                                    "data": {
+                                        "type": "object",
+                                        "properties": {
+                                            "outputs": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "User_ID": { "type": "string", "example": "12345678" },
+                                                        "eventID": { "type": "string", "example": "COMP1011" },
+                                                        "timestamp": { "type": "long", "example": 1732150000000 }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No transactions found",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": { "type": "string", "example": "No attendance transactions found for the specified criteria." }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid parameters",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": { "type": "string", "example": "Invalid input data" }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
         "/blockchain/transactions/unspent": {
             "get": {
                 "tags": [
