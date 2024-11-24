@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "./event.css";
 
 const Event = () => {
     const [userID, setUserID] = useState("");
     const [eventID, setEventID] = useState("");
-    const [ddl, setDdl] = useState("");
+    const [ddl, setDdl] = useState(null);
     const [privateKey, setPrivateKey] = useState("");
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
@@ -18,10 +20,11 @@ const Event = () => {
         setError("");
 
         try {
+            const formattedDdl = ddl ? ddl.toISOString() : "";
             const response = await axios.post("http://localhost:3001/operator/event", {
                 User_ID: userID,
                 eventID: eventID,
-                ddl: ddl,
+                ddl: formattedDdl,
                 privateKey: privateKey,
             });
 
@@ -49,25 +52,24 @@ const Event = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="eventID">Enter the Event ID you want to create:</label>
+                    <label htmlFor="eventID">Event ID:</label>
                     <input
                         type="text"
                         id="eventID"
                         value={eventID}
                         onChange={(e) => setEventID(e.target.value)}
                         required
-                        placeholder="Enter the Event ID"
+                        placeholder="Enter Event ID"
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="ddl">Deadline (e.g. 2024/12/02 15:30):</label>
-                    <input
-                        type="text"
-                        id="ddl"
-                        value={ddl}
-                        onChange={(e) => setDdl(e.target.value)}
-                        required
-                        placeholder="Enter deadline (YYYY/MM/DD HH:mm)"
+                    <label htmlFor="ddl">Deadline:</label>
+                    <DatePicker
+                        selected={ddl}
+                        onChange={(date) => setDdl(date)}
+                        showTimeSelect
+                        dateFormat="yyyy/MM/dd HH:mm"
+                        placeholderText="Select deadline (YYYY/MM/DD HH:mm)"
                     />
                 </div>
                 <div className="form-group">

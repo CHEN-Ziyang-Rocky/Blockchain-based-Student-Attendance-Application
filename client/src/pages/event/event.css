@@ -81,3 +81,7 @@ input:focus {
     border: 1px solid #f5c6cb;
     border-radius: 5px;
 }
+
+.react-datepicker__header .react-datepicker__current-month {
+    color: #000 !important;
+}

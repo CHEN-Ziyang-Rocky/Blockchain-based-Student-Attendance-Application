@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "./Querying.css";
 
 const QueryAttendance = () => {
     const [studentId, setStudentId] = useState("");
     const [classId, setClassId] = useState("");
-    const [startDate, setStartDate] = useState("");
-    const [endDate, setEndDate] = useState("");
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
     const [attendanceRecords, setAttendanceRecords] = useState([]);
     const [error, setError] = useState("");
 
@@ -19,8 +21,8 @@ const QueryAttendance = () => {
             const params = {};
             if (studentId) params.User_ID = studentId;
             if (classId) params.eventID = classId;
-            if (startDate) params.startTime = startDate;
-            if (endDate) params.endTime = endDate;
+            if (startDate) params.startTime = startDate.toISOString();
+            if (endDate) params.endTime = endDate.toISOString();
 
             const response = await axios.get("http://localhost:3001/blockchain/transactions/attendance", { params });
             setAttendanceRecords(response.data);
@@ -55,20 +57,22 @@ const QueryAttendance = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="startDate">Start Date:</label>
-                    <input
-                        type="datetime-local"
-                        id="startDate"
-                        value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)}
+                    <DatePicker
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
+                        showTimeSelect
+                        dateFormat="yyyy/MM/dd HH:mm"
+                        placeholderText="Select Start Date"
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="endDate">End Date:</label>
-                    <input
-                        type="datetime-local"
-                        id="endDate"
-                        value={endDate}
-                        onChange={(e) => setEndDate(e.target.value)}
+                    <DatePicker
+                        selected={endDate}
+                        onChange={(date) => setEndDate(date)}
+                        showTimeSelect
+                        dateFormat="yyyy/MM/dd HH:mm"
+                        placeholderText="Select End Date"
                     />
                 </div>
                 <button type="submit" className="submit-button">Search</button>
