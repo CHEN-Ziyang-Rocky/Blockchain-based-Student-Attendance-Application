@@ -9,7 +9,7 @@
 | LI Shuhang   | 21102658d  | Implementation the backend of the Student Attendance Application: <br />Student information registration and Mint. <br />Assist the frontend to complete the corresponding work. |
 | LU Zhoudao   |            | Enhanced functionality: Achieve dynamic difficulty.          |
 | LUO Yi       |            | Enhanced functionality                                       |
-| YE Chenwei   | 21103853d  | Implementation the backend of Sthe tudent Attendance Application: <br />Attendance information recording and Record querying. <br />Assist the frontend to complete the corresponding work. |
+| YE Chenwei   | 21103853d  | Implementation the backend of the Student Attendance Application: <br />Attendance information recording and Record querying. <br />Assist the frontend to complete the corresponding work. |
 
 
 
