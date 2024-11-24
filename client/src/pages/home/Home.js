@@ -18,32 +18,32 @@ const Home = () => {
                     <tr>
                         <td>CHEN Ziyang</td>
                         <td>21095751d</td>
-                        <td></td>
+                        <td>All frontend content of the Student Attendance Application, and create a user-friendly UI. Create the function "Get Secret Key" on the backend. Assist the backend to complete the work.</td>
                     </tr>
                     <tr>
                         <td>HE Rong</td>
-                        <td></td>
-                        <td></td>
+                        <td>21101622d</td>
+                        <td>Attend group meetings with team members to discuss the project.</td>
                     </tr>
                     <tr>
                         <td>LI Shuhang</td>
-                        <td></td>
-                        <td></td>
+                        <td>21102658d</td>
+                        <td>Implementation the backend of the Student Attendance Application: Student information registration and Mint. Assist the frontend to complete the corresponding work.</td>
                     </tr>
                     <tr>
                         <td>LU Zhoudao</td>
                         <td></td>
-                        <td></td>
+                        <td>Enhanced functionality: Achieve dynamic difficulty.</td>
                     </tr>
                     <tr>
                         <td>LUO Yi</td>
                         <td></td>
-                        <td></td>
+                        <td>Enhanced functionality</td>
                     </tr>
                     <tr>
                         <td>YE Chenwei</td>
-                        <td></td>
-                        <td></td>
+                        <td>21103853d</td>
+                        <td>Implementation the backend of Sthe tudent Attendance Application: Attendance information recording and Record querying. Assist the frontend to complete the corresponding work.</td>
                     </tr>
                 </tbody>
             </table>

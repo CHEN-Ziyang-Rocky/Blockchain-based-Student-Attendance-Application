@@ -1,5 +1,5 @@
 .home-container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 50px auto;
     padding: 20px;
     background-color: #f9f9f9;
@@ -40,11 +40,16 @@ h3 {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
+    text-align: center;
 }
 
 .contributors-table th {
     background-color: #007bff;
     color: white;
+}
+
+.contributors-table thead {
+    text-align: center;
 }
 
 .project-section {

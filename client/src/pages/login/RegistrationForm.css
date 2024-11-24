@@ -1,7 +1,6 @@
 /* /Users/chenziyang/Desktop/E-payment/Project/naivecoin/client/src/pages/login/RegistrationForm.css */
 .container {
     max-width: 600px;
-    /* 保持较大的容器宽度 */
     margin: 50px auto;
     padding: 30px;
     border: 1px solid #ddd;
@@ -10,7 +9,6 @@
     background-color: #f9f9f9;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
-    /* 设置整体字体较大 */
 }
 
 h2 {
@@ -18,7 +16,6 @@ h2 {
     margin-bottom: 20px;
     color: #333;
     font-size: 24px;
-    /* 标题字体更大 */
 }
 
 .form {
@@ -45,7 +42,6 @@ input {
     box-sizing: border-box;
     transition: border-color 0.3s;
     font-size: 18px;
-    /* 输入框字体更大 */
 }
 
 input:focus {
@@ -61,7 +57,6 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 18px;
-    /* 按钮字体更大 */
     transition: background-color 0.3s;
 }
 
@@ -93,14 +88,12 @@ button:hover:not(:disabled) {
     border-radius: 4px;
     word-wrap: break-word;
     font-size: 18px;
-    /* 结果信息字体更大 */
 }
 
 .result h3 {
     margin-top: 0;
     color: #155724;
     font-size: 20px;
-    /* 结果标题字体稍微更大 */
 }
 
 .result p {
@@ -108,13 +101,11 @@ button:hover:not(:disabled) {
     word-break: break-all;
 }
 
-/* 响应式设计 */
 @media (max-width: 480px) {
     .container {
         margin: 20px;
         padding: 15px;
         font-size: 16px;
-        /* 在小屏幕上稍微减小字体 */
     }
 
     h2 {

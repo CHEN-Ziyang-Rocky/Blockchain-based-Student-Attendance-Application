@@ -35,7 +35,7 @@ const RegistrationForm = () => {
             </Title>
             <Form onFinish={onFinish} className="form">
                 <Form.Item
-                    label="User_ID"
+                    label="User ID"
                     name="User_ID"
                     rules={[{ required: true, message: 'Please enter your ID' }]}
                 >
