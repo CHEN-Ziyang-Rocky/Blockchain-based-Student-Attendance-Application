@@ -16,6 +16,14 @@ h1 {
     margin-bottom: 20px;
 }
 
+strong {
+    color: black;
+}
+
+pre {
+    color: #444444;
+}
+
 h2 {
     font-size: 1.8rem;
     margin-top: 30px;

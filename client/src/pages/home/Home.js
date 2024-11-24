@@ -1,11 +1,12 @@
-// /Users/chenziyang/Desktop/E-payment/Project/naivecoin/client/src/pages/home/Home.js
 import React from 'react';
 import './Home.css';
 
 const Home = () => {
     return (
         <div className="home-container">
-            <h1 style={{ color: '#000' }}>Contributors:</h1>
+            <h1 style={{ textAlign: 'center', color: '#000' }}>COMP4142 Group Project based on Naivecoin</h1>
+
+            <h2 style={{ color: '#000' }}>Contributors:</h2>
             <table className="contributors-table">
                 <thead>
                     <tr>
@@ -16,64 +17,76 @@ const Home = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>CHEN Ziyang</td>
-                        <td>21095751d</td>
-                        <td>All frontend content of the Student Attendance Application, and create a user-friendly UI. Create the function "Get Secret Key" on the backend. Assist the backend to complete the work.</td>
+                        <td><strong>CHEN Ziyang</strong></td>
+                        <td><strong>21095751d</strong></td>
+                        <td>
+                            <strong>All frontend content</strong> of the <strong>Student Attendance Application</strong>, <br />
+                            and create a <strong>user-friendly UI</strong>. Create the function <strong>"Get Secret Key"</strong> <br />
+                            on the backend. Assist the backend to complete the work.
+                        </td>
                     </tr>
                     <tr>
-                        <td>HE Rong</td>
-                        <td>21101622d</td>
-                        <td>Attend group meetings with team members to discuss the project.</td>
+                        <td><strong>HE Rong</strong></td>
+                        <td><strong>21101622d</strong></td>
+                        <td>Attend <strong>group meetings</strong> with team members to discuss the project.</td>
                     </tr>
                     <tr>
-                        <td>LI Shuhang</td>
-                        <td>21102658d</td>
-                        <td>Implementation the backend of the Student Attendance Application: Student information registration and Mint. Assist the frontend to complete the corresponding work.</td>
+                        <td><strong>LI Shuhang</strong></td>
+                        <td><strong>21102658d</strong></td>
+                        <td>
+                            Implementation the backend of the <strong>Student Attendance Application</strong>: <br />
+                            <strong>Student information registration</strong> and <strong>Mint</strong>. <br />
+                            Assist the frontend to complete the corresponding work.
+                        </td>
                     </tr>
                     <tr>
-                        <td>LU Zhoudao</td>
+                        <td><strong>LU Zhoudao</strong></td>
                         <td></td>
-                        <td>Enhanced functionality: Achieve dynamic difficulty.</td>
+                        <td>Enhanced functionality: <strong>Achieve dynamic difficulty</strong>.</td>
                     </tr>
                     <tr>
-                        <td>LUO Yi</td>
+                        <td><strong>LUO Yi</strong></td>
                         <td></td>
                         <td>Enhanced functionality</td>
                     </tr>
                     <tr>
-                        <td>YE Chenwei</td>
-                        <td>21103853d</td>
-                        <td>Implementation the backend of Sthe tudent Attendance Application: Attendance information recording and Record querying. Assist the frontend to complete the corresponding work.</td>
+                        <td><strong>YE Chenwei</strong></td>
+                        <td><strong>21103853d</strong></td>
+                        <td>
+                            Implementation the backend of the <strong>Student Attendance Application</strong>: <br />
+                            <strong>Attendance information recording</strong> and <strong>Record querying</strong>. <br />
+                            Assist the frontend to complete the corresponding work.
+                        </td>
                     </tr>
                 </tbody>
             </table>
 
-            <h2 style={{ color: '#000' }}>Project Procedures</h2>
+            <h2 style={{ color: '#000' }}>Project Functions:</h2>
 
             <div className="project-section">
-                <h3 style={{ color: '#000' }}>Student information registration</h3>
+                <h3 style={{ color: '#000' }}>Student Information Registration</h3>
                 <ol>
-                    <li>学生生成一个 key pair (public key & secret key)。public key = student identity（公钥）。</li>
-                    <li>学生需要首先用自己的 student ID 和 public key 注册到区块链上。</li>
-                    <li>然后保存 secret key 到 wallet 里。</li>
+                    <li>Students generate a key pair (public key & secret key), where the public key serves as the student's identity.</li>
+                    <li>Students must first register their <strong>student ID</strong> and <strong>public key</strong> on the blockchain.</li>
+                    <li>They then save the secret key to their wallet.</li>
                 </ol>
             </div>
 
             <div className="project-section">
-                <h3 style={{ color: '#000' }}>Attendance information recording</h3>
+                <h3 style={{ color: '#000' }}>Attendance Information Recording</h3>
                 <ol>
                     <li>
-                        学生使用他们的 secret key，签署 attendance certificate (student ID, event ID, and timestamp) 使用 ECDSA。
+                        Students use their secret key to sign an <strong>attendance certificate</strong> (consisting of student ID, event ID, and timestamp) using ECDSA.
                         <ul>
-                            <li>student ID = 学生号，eg. 21095751d</li>
-                            <li>event ID = 老师自己生成的随机课程代码，eg. COMP4142</li>
-                            <li>timestamp = 当下时间戳</li>
+                            <li><strong>Student ID:</strong> The student's unique identifier, e.g., <code>21095751d</code>.</li>
+                            <li><strong>Event ID:</strong> A randomly generated course code created by the teacher, e.g., <code>COMP4142</code>.</li>
+                            <li><strong>Timestamp:</strong> The current timestamp.</li>
                         </ul>
                     </li>
                     <li>
-                        签署 attendance certificate 后变成一个 transaction，transaction 首先发送到自己的节点的 pending pool 中，然后系统将会把这个 transaction 广播到其他和他配对的 node 的 pending pool 中。
+                        After signing the attendance certificate, it becomes a transaction. The transaction is first sent to the pending pool of the student's node and then broadcasted to the pending pools of other paired nodes.
                         <ul>
-                            <li>Transaction = Attendance certificate + Signature</li>
+                            <li><strong>Transaction:</strong> Attendance Certificate + Signature</li>
                         </ul>
                     </li>
                 </ol>
@@ -82,16 +95,18 @@ const Home = () => {
             <div className="project-section">
                 <h3 style={{ color: '#000' }}>Mint</h3>
                 <ol>
-                    <li>其他 node 收到 Transaction 后，使用 public key 验证其 Transaction 里 attendance certificate 的 signature，验证成功放入 pending pool 中。</li>
-                    <li>学生可以将 pending pool 中的 transaction 按照优先级选择一些 transaction 进行打包。</li>
-                    <li>矿工 = 学生。在自己的节点打包 transaction 后开始挖矿，成功满足 PoW 生成区块哈希值，获得生成新区块的权利，已打包 transaction 就会从 pending pool 中移除并添加到区块链中。</li>
-                    <li>其成功添加区块的 node 将新区块广播给网络中的其他 node，其他 node 验证该区块并将其添加到本地的区块链副本中，并且删除自己 pending pool 中的对应 transaction。</li>
+                    <li>When other nodes receive the transaction, they use the <strong>public key</strong> to verify the <strong>signature</strong> in the attendance certificate. If verified, the transaction is added to their pending pool.</li>
+                    <li>Students can select transactions from the pending pool based on priority and package them.</li>
+                    <li>
+                        <strong>Miner = Student:</strong> After packaging transactions in their node, students start mining. Upon successfully solving the PoW and generating the block hash, they gain the right to add a new block. Packaged transactions are then removed from the pending pool and added to the blockchain.
+                    </li>
+                    <li>The node that successfully adds the block broadcasts the new block to other nodes in the network. Other nodes validate the block, add it to their local blockchain copy, and remove the corresponding transactions from their pending pool.</li>
                 </ol>
             </div>
 
             <div className="project-section">
-                <h3 style={{ color: '#000' }}>Record querying</h3>
-                <p>教师可以查询特定学生的整个学期或几个星期出勤情况，或一个班级的出勤名单。</p>
+                <h3 style={{ color: '#000' }}>Record Querying</h3>
+                <p>Teachers, e.g., <code>12345678t</code> can query the attendance records for an entire semester or specific weeks of a particular student, or retrieve the attendance list for an entire class. (So far, our database only has one teacher, and the teacher id is <code>12345678t</code>)</p>
             </div>
         </div>
     );
