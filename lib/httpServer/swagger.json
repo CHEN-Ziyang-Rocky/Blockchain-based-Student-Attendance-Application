@@ -342,6 +342,62 @@
                 }
             }
         },
+        
+        "/blockchain/transactions/events": {
+            "get": {
+            "tags": ["blockchain"],
+            "summary": "Retrieve all event transactions",
+            "description": "Fetch all transactions of type 'event' from the blockchain, including their User_ID and eventID.",
+            "parameters": [],
+            "responses": {
+                "200": {
+                "description": "Successfully retrieved all event transactions.",
+                "schema": {
+                    "type": "array",
+                    "items": {
+                    "type": "object",
+                    "properties": {
+                        "eventID": {
+                        "type": "string",
+                        "description": "The ID of the event published by the user.",
+                        "example": "comp2011"
+                        }
+                    }
+                    }
+                }
+                },
+                "404": {
+                "description": "No event transactions found.",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "message": {
+                        "type": "string",
+                        "example": "No event transactions found"
+                    }
+                    }
+                }
+                },
+                "500": {
+                "description": "Server error while fetching the events.",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "message": {
+                        "type": "string",
+                        "example": "Failed to fetch events"
+                    },
+                    "error": {
+                        "type": "string",
+                        "example": "Internal server error"
+                    }
+                    }
+                }
+                }
+            }
+            }
+        },   
+
         "/operator/wallets": {
             "get": {
                 "tags": [
@@ -976,6 +1032,7 @@
             }
         }
     },
+
     "definitions": {
         "Block": {
             "type": "object",
