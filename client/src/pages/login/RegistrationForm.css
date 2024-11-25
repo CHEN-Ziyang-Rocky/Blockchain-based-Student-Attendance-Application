@@ -77,7 +77,6 @@ button:hover:not(:disabled) {
     color: #721c24;
     border-radius: 4px;
     font-size: 18px;
-    /* 错误信息字体较大 */
 }
 
 .result {
