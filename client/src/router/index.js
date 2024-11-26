@@ -9,10 +9,12 @@ import UnconfirmedTransactions from '../pages/transactions/UnconfirmedTransactio
 import Mint from '../pages/mint/Mint';
 import Attendance from '../pages/attendance/Attendance';
 import QueryAttendance from '../pages/query/Querying';
-import WalletDetails from '../pages/wallet/WalletDetails';
-import WalletList from '../pages/wallet/WalletList';
-import GetSecretKey from '../pages/wallet/GetSecretKey';
+//import WalletDetails from '../pages/wallet/WalletDetails';
+//import WalletList from '../pages/wallet/WalletList';
+//import GetSecretKey from '../pages/wallet/GetSecretKey';
 import Event from '../pages/event/event';
+import EventQuery from '../pages/eventQuery/EventQuery';
+import WalletAndSecretKey from '../pages/wallet';
 // Import other pages as needed
 
 const router = createBrowserRouter([
@@ -29,17 +31,21 @@ const router = createBrowserRouter([
                 element: <RegistrationForm />,
             },
             {
-                path: 'walletDetails',
-                element: <WalletDetails />,
+                path: 'wallet',
+                element: <WalletAndSecretKey />,
             },
-            {
-                path: 'walletList',
-                element: <WalletList />,
-            },
-            {
-                path: 'getSecretKey',
-                element: <GetSecretKey />,
-            },
+            // {
+            //     path: 'walletDetails',
+            //     element: <WalletDetails />,
+            // },
+            // {
+            //     path: 'walletList',
+            //     element: <WalletList />,
+            // },
+            // {
+            //     path: 'getSecretKey',
+            //     element: <GetSecretKey />,
+            // },
             {
                 path: 'attendance',
                 element: <Attendance />,
@@ -55,6 +61,10 @@ const router = createBrowserRouter([
             {
                 path: 'query',
                 element: <QueryAttendance />,
+            },
+            {
+                path: 'eventquery',
+                element: <EventQuery />,
             },
             {
                 path: '/blockchain',

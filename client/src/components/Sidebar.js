@@ -20,20 +20,25 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/walletDetails" activeClassName="active">
+                    <NavLink to="/wallet" activeClassName="active">
                         Check Wallet Details
                     </NavLink>
                 </li>
-                <li>
+                {/* <li>
+                    <NavLink to="/walletDetails" activeClassName="active">
+                        Check Wallet Details
+                    </NavLink>
+                </li> */}
+                {/* <li>
                     <NavLink to="/walletList" activeClassName="active">
                         Check Wallet List
                     </NavLink>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                     <NavLink to="/getSecretKey" activeClassName="active">
                         Get the Secret Key
                     </NavLink>
-                </li>
+                </li> */}
                 <li>
                     <NavLink to="/attendance" activeClassName="active">
                         Record Attendance
@@ -52,6 +57,11 @@ const Sidebar = () => {
                 <li>
                     <NavLink to="/query" activeClassName="active">
                         Record Querying
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/eventquery" activeClassName="active">
+                        Event Querying
                     </NavLink>
                 </li>
                 <li>
