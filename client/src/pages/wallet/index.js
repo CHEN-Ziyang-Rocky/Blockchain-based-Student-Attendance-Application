@@ -3,14 +3,16 @@ import axios from "axios";
 import "./index.css";
 
 const WalletAndSecretKey = () => {
-    const [walletId, setWalletId] = useState("");
+    const [walletId, setWalletId] = useState(""); // For Wallet ID to fetch details
+    const [walletAddress, setWalletAddress] = useState(""); // For Wallet Address to fetch balance
     const [password, setPassword] = useState("");
     const [walletDetails, setWalletDetails] = useState(null);
     const [secretKey, setSecretKey] = useState("");
-    const [balance, setBalance] = useState(null); // state for balance
+    const [balance, setBalance] = useState(null); // State for wallet balance
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
+    // Fetch Wallet details using Wallet ID
     const handleFetchDetails = async () => {
         try {
             setError("");
@@ -22,6 +24,7 @@ const WalletAndSecretKey = () => {
         }
     };
 
+    // Fetch Secret Key based on Wallet ID and Password
     const handleRetrieveSecretKey = async (e) => {
         e.preventDefault();
         setIsLoading(true);
@@ -42,10 +45,11 @@ const WalletAndSecretKey = () => {
         }
     };
 
+    // Fetch Wallet Balance using Wallet Address
     const handleFetchBalance = async () => {
         try {
             setError("");
-            const response = await axios.get(`http://localhost:3001/operator/${walletId}/balance`);
+            const response = await axios.get(`http://localhost:3001/operator/${walletAddress}/balance`);
             setBalance(response.data.balance);
         } catch (err) {
             setError("Failed to fetch balance.");
@@ -81,6 +85,12 @@ const WalletAndSecretKey = () => {
             {/* Balance Section */}
             <div className="balance-section">
                 <h2 style={{ color: '#000' }}>Wallet Balance</h2>
+                <input
+                    type="text"
+                    placeholder="Enter Wallet Address"
+                    value={walletAddress}
+                    onChange={(e) => setWalletAddress(e.target.value)}
+                />
                 <button onClick={handleFetchBalance}>Get Wallet Balance</button>
                 {balance !== null && (
                     <div className="wallet-info">
