@@ -5,7 +5,7 @@
 | Student Name | Student ID | Responsible Part                                             |
 | ------------ | ---------- | ------------------------------------------------------------ |
 | CHEN Ziyang  | 21095751d  | All frontend content of the Student Attendance Application, <br />and create a user-friendly UI. Create the function "Get Secret Key" <br />on the backend. Assist the backend to complete the work. |
-| HE Rong      | 21101622d  | Attend group meetings with team members to discuss the project. |
+| HE Rong      | 21101622d  | Assist in enhancing functionality and organizing meetings. Overall flow check. |
 | LI Shuhang   | 21102658d  | Implementation the backend of the Student Attendance Application: <br />Student information registration and Mint. <br />Assist the frontend to complete the corresponding work. |
 | LU Zhoudao   | 21099695d  | Enhanced functionality: Achieve dynamic difficulty and Basic Fork Resolution (cumulative difficulty).|
 | LUO Yi       | 21108269d  | Enhanced functionality: Basic Fork Resolution.                |

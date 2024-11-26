@@ -28,7 +28,7 @@ const Home = () => {
                     <tr>
                         <td><strong>HE Rong</strong></td>
                         <td><strong>21101622d</strong></td>
-                        <td>Attend <strong>group meetings</strong> with team members to discuss the project.</td>
+                        <td>Assist in enhancing functionality and organizing meetings. <br />Overall flow check.</td>
                     </tr>
                     <tr>
                         <td><strong>LI Shuhang</strong></td>
