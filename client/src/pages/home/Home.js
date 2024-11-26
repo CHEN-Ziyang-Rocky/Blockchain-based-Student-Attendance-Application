@@ -106,7 +106,7 @@ const Home = () => {
 
             <div className="project-section">
                 <h3 style={{ color: '#000' }}>Record Querying</h3>
-                <p>Teachers, e.g., <code>12345678t</code> can query the attendance records for an entire semester or specific weeks of a particular student, or retrieve the attendance list for an entire class. (So far, our database only has one teacher, and the teacher id is <code>12345678t</code>)</p>
+                <p>Teachers, e.g., <code>12345678t, Korris, and XiaoBin</code> can query the attendance records for an entire semester or specific weeks of a particular student, or retrieve the attendance list for an entire class. (So far, our database only has three teacher, and the teacher id is <code>12345678t, Korris, and XiaoBin</code>)</p>
             </div>
         </div>
     );
