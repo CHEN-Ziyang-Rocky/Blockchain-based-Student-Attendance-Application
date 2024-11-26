@@ -1,0 +1,1130 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Visualize the blockchain by accessing <a href='/blockchain' target='_blank'>here</a>.",
+        "version": "0.0.1",
+        "title": "Naivecoin API"
+    },
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/blockchain/blocks": {
+            "get": {
+                "tags": [
+                    "blockchain"
+                ],
+                "summary": "Get all blocks",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Block"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/blockchain/blocks/{index}": {
+            "get": {
+                "tags": [
+                    "blockchain"
+                ],
+                "summary": "Get block by index",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "index",
+                        "description": "Index of the block",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Block"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/blockchain/blocks/{hash}": {
+            "get": {
+                "tags": [
+                    "blockchain"
+                ],
+                "summary": "Get block by hash",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "hash",
+                        "description": "Hash of the block",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Block"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/blockchain/blocks/latest": {
+            "get": {
+                "tags": [
+                    "blockchain"
+                ],
+                "summary": "Get the latest block",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Block"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "blockchain"
+                ],
+                "summary": "Update the latest block",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Block to be evaluated",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Block"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    }
+                }
+            }
+        },
+        "/blockchain/blocks/transactions/{transactionId}": {
+            "get": {
+                "tags": [
+                    "blockchain"
+                ],
+                "summary": "Get a transaction from some block",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "transactionId",
+                        "description": "Transaction id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Block"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/blockchain/transactions": {
+            "get": {
+                "tags": [
+                    "blockchain"
+                ],
+                "summary": "Get unconfirmed transactions",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Transaction"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "blockchain"
+                ],
+                "summary": "Create a transaction",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Transaction",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Transaction"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/Transaction"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    }
+                }
+            }
+        },
+
+        "/blockchain/transactions/attendance": {
+            "get": {
+                "tags": ["blockchain"],
+                "summary": "Get attendance transactions",
+                "description": "Retrieve attendance transactions filtered by studentId, eventId, and/or a timestamp range.",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "User_ID",
+                        "type": "string",
+                        "description": "The ID of the student",
+                        "required": false,
+                        "example": "12345678"
+                    },
+                    {
+                        "in": "query",
+                        "name": "eventID",
+                        "type": "string",
+                        "description": "The ID of the event",
+                        "required": false,
+                        "example": "COMP1011"
+                    },
+                    {
+                        "in": "query",
+                        "name": "startTime",
+                        "type": "string",
+                        "description": "The start time for filtering in format YYYY-MM-DD HH:mm:ss",
+                        "required": false,
+                        "example": "2024-11-20 00:00:00"
+                    },
+                    {
+                        "in": "query",
+                        "name": "endTime",
+                        "type": "string",
+                        "description": "The start time for filtering in format YYYY-MM-DD HH:mm:ss",
+                        "required": false,
+                        "example": "2024-11-20 00:00:00"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Filtered attendance transactions",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": { "type": "string", "example": "attendance_123456" },
+                                    "type": { "type": "string", "example": "attendance" },
+                                    "data": {
+                                        "type": "object",
+                                        "properties": {
+                                            "outputs": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "User_ID": { "type": "string", "example": "12345678" },
+                                                        "eventID": { "type": "string", "example": "COMP1011" },
+                                                        "timestamp": { "type": "long", "example": 1732150000000 }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No transactions found",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": { "type": "string", "example": "No attendance transactions found for the specified criteria." }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid parameters",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": { "type": "string", "example": "Invalid input data" }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/blockchain/transactions/unspent": {
+            "get": {
+                "tags": [
+                    "blockchain"
+                ],
+                "summary": "Get unspent transactions",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "address",
+                        "description": "Address id",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Transaction"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        
+        "/blockchain/transactions/events": {
+            "get": {
+            "tags": ["blockchain"],
+            "summary": "Retrieve all event transactions",
+            "description": "Fetch all transactions of type 'event' from the blockchain, including their User_ID and eventID.",
+            "parameters": [],
+            "responses": {
+                "200": {
+                "description": "Successfully retrieved all event transactions.",
+                "schema": {
+                    "type": "array",
+                    "items": {
+                    "type": "object",
+                    "properties": {
+                        "eventID": {
+                        "type": "string",
+                        "description": "The ID of the event published by the user.",
+                        "example": "comp2011"
+                        }
+                    }
+                    }
+                }
+                },
+                "404": {
+                "description": "No event transactions found.",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "message": {
+                        "type": "string",
+                        "example": "No event transactions found"
+                    }
+                    }
+                }
+                },
+                "500": {
+                "description": "Server error while fetching the events.",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "message": {
+                        "type": "string",
+                        "example": "Failed to fetch events"
+                    },
+                    "error": {
+                        "type": "string",
+                        "example": "Internal server error"
+                    }
+                    }
+                }
+                }
+            }
+            }
+        },   
+
+        "/operator/wallets": {
+            "get": {
+                "tags": [
+                    "operator"
+                ],
+                "summary": "Get all wallets",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Wallet"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "operator"
+                ],
+                "summary": "Create a wallet from a password",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Wallet request",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "password": {
+                                    "type": "string",
+                                    "description": "Password (must contain more than 4 words)"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/Wallet"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/operator/wallets/{walletId}": {
+            "get": {
+                "tags": [
+                    "operator"
+                ],
+                "summary": "Get wallet by id",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "walletId",
+                        "description": "Wallet id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Wallet"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/operator/wallets/{walletId}/addresses": {
+            "get": {
+                "tags": [
+                    "operator"
+                ],
+                "summary": "Get all addresses of a wallet",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "walletId",
+                        "description": "Wallet id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Address"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "operator"
+                ],
+                "summary": "Create a new address",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "password",
+                        "description": "Wallet password",
+                        "required": true,
+                        "type": "string",
+                        "format": "password"
+                    },
+                    {
+                        "in": "path",
+                        "name": "walletId",
+                        "description": "Wallet id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "$ref": "#/definitions/Address"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/operator/wallets/{walletId}/transactions": {
+            "post": {
+                "tags": [
+                    "operator"
+                ],
+                "summary": "Create a new transaction",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "walletId",
+                        "description": "Wallet id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "password",
+                        "description": "Wallet password",
+                        "required": true,
+                        "type": "string",
+                        "format": "password"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Transaction to be created",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "fromAddress",
+                                "toAddress",
+                                "amount"
+                            ],
+                            "properties": {
+                                "fromAddress": {
+                                    "type": "string",
+                                    "description": "From address"
+                                },
+                                "toAddress": {
+                                    "type": "string",
+                                    "description": "To address"
+                                },
+                                "amount": {
+                                    "type": "integer",
+                                    "description": "Amount (in satoshis)"
+                                },
+                                "changeAddress": {
+                                    "type": "string",
+                                    "description": "Change address"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/Transaction"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/operator/{addressId}/balance": {
+            "get": {
+                "tags": [
+                    "operator"
+                ],
+                "summary": "Get the balance of a given address",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "addressId",
+                        "description": "Address id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "balance": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/operator/registerStudent": {
+            "post": {
+                "tags": [
+                    "operator"
+                ],
+                "summary": "Register a new student",
+                "description": "Registers a new student by creating a wallet and storing the public key on the blockchain.",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Student registration details",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "User_ID": {
+                                    "type": "string",
+                                    "description": "The student ID for the new student"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "description": "The password to create the wallet for the student"
+                                }
+                            },
+                            "required": ["User_ID", "password"]
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Student registered successfully",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "User_ID": { "type": "string" },
+                                "walletID": { "type": "string" },
+                                "publicKey": { "type": "string" }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input data"
+                    }
+                }
+            }
+        }, 
+        "/operator/attendance": {
+            "post": {
+                "tags": [
+                    "operator"
+                ],
+                "summary": "Sign and record attendance",
+                "description": "Allows a student to sign and record attendance with their private key. The server generates the timestamp and hash, and the transaction is saved to the blockchain.",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Details required for attendance recording, including the private key for signing.",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "User_ID": {
+                                    "type": "string",
+                                    "description": "The student's ID",
+                                    "example": "student123"
+                                },
+                                "eventID": {
+                                    "type": "string",
+                                    "description": "The event or class ID for which attendance is being recorded",
+                                    "example": "COMP4141"
+                                },
+                                "privateKey": {
+                                    "type": "string",
+                                    "description": "The private key of the student for signing the attendance data",
+                                    "example": "your_private_key_here"
+                                }
+                            },
+                            "required": [
+                                "User_ID",
+                                "eventID",
+                                "privateKey"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Attendance signed and recorded successfully",
+                        "schema": {
+                            "type": "attendance",
+                            "properties": {
+                                "User_ID": {
+                                    "type": "string",
+                                    "example": "student123"
+                                },
+                                "eventID": {
+                                    "type": "string",
+                                    "example": "COMP4141"
+                                },
+                                "timestamp": {
+                                    "type": "integer",
+                                    "example": 1638288000000
+                                },
+                                "signature": {
+                                    "type": "string",
+                                    "example": "5e88489f2ba6c671e06c30145a4b872..."
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input data",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Missing required fields"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Signature verification failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Signature verification failed"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Failed to sign or record attendance"
+                                },
+                                "error": {
+                                    "type": "string",
+                                    "example": "Detailed error message here"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/operator/event": {
+            "post": {
+                "tags": [
+                    "operator"
+                ],
+                "summary": "Create and sign an event",
+                "description": "Allows a teacher to create and sign an event by submitting their details and a deadline (ddl).",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Details for the event creation",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "User_ID": {
+                                    "type": "string",
+                                    "description": "The teacher's ID",
+                                    "example": "teacher123"
+                                },
+                                "eventID": {
+                                    "type": "string",
+                                    "description": "The unique ID of the event",
+                                    "example": "event456"
+                                },
+                                "ddl": {
+                                    "type": "string",
+                                    "description": "The deadline for the event in YYYY/MM/DD HH:mm format",
+                                    "example": "2024/12/02 15:30"
+                                },
+                                "privateKey": {
+                                    "type": "string",
+                                    "description": "The teacher's private key for signing the event",
+                                    "example": "privateKey123"
+                                }
+                            },
+                            "required": ["User_ID", "eventID", "ddl", "privateKey"]
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Event created and signed successfully",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Event created successfully"
+                                },
+                                "transactionId": {
+                                    "type": "string",
+                                    "description": "The unique ID of the created event transaction",
+                                    "example": "event_123"
+                                },
+                                "timestamp": {
+                                    "type": "integer",
+                                    "description": "The timestamp of the event based on the ddl",
+                                    "example": 1735689599000
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input data",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Invalid input data"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized user",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "User is not authorized to create events"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },                
+
+        "/node/peers": {
+            "get": {
+                "tags": [
+                    "node"
+                ],
+                "summary": "Get all peers connected to this node",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Peer"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "node"
+                ],
+                "summary": "Connects a new peer to this node",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Peer to be added",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Peer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/node/transactions/{transactionId}/confirmations": {
+            "get": {
+                "tags": [
+                    "node"
+                ],
+                "summary": "Get how many confirmations a block has",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "transactionId",
+                        "description": "Transaction id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "confirmations": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/miner/mine": {
+            "post": {
+                "tags": [
+                    "miner"
+                ],
+                "summary": "Mine a new block",
+                "description": "Mine a new block and add it to the end of the blockchain.",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Mine request",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "rewardAddress"
+                            ],
+                            "properties": {
+                                "rewardAddress": {
+                                    "description": "Address to send the reward",
+                                    "type": "string"
+                                },
+                                "feeAddress": {
+                                    "description": "Address to send the fee",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/Block"
+                        }
+                    }
+                }
+            }
+        }
+    },
+
+    "definitions": {
+        "Block": {
+            "type": "object",
+            "properties": {
+                "index": {
+                    "type": "integer"
+                },
+                "previousHash": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "object"
+                },
+                "hash": {
+                    "type": "string"
+                }
+            }
+        },
+        "Peer": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "Wallet": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Address": {
+            "type": "string"
+        },
+        "Transaction": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "inputs": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "transaction": {
+                                        "type": "string"
+                                    },
+                                    "index": {
+                                        "type": "integer"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "signature": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "outputs": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer"
+                                    },
+                                    "address": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
