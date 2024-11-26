@@ -22,7 +22,7 @@ const RegistrationForm = () => {
             setRegistrationResult(response.data);
         } catch (err) {
             console.error(err);
-            setError(err.response?.data?.message || '注册失败，请稍后再试。');
+            setError(err.response?.data?.message || 'Registration failed, please try again later.');
         } finally {
             setIsSubmitting(false);
         }
@@ -65,7 +65,7 @@ const RegistrationForm = () => {
                     description={
                         <div>
                             <p>
-                                <strong style={{ color: '#000' }}>Student ID:</strong> {registrationResult.User_ID}
+                                <strong style={{ color: '#000' }}>User ID:</strong> {registrationResult.User_ID}
                             </p>
                             <p>
                                 <strong style={{ color: '#000' }}>Wallet ID:</strong> {registrationResult.walletID}
