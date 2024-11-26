@@ -41,13 +41,13 @@ const Home = () => {
                     </tr>
                     <tr>
                         <td><strong>LU Zhoudao</strong></td>
-                        <td></td>
-                        <td>Enhanced functionality: <strong>Achieve dynamic difficulty</strong>.</td>
+                        <td><strong>21099695d</strong></td>
+                        <td>Enhanced functionality: <strong>Achieve dynamic difficulty and <br /> Basic Fork Resolution (cumulative difficulty).</strong></td>
                     </tr>
                     <tr>
                         <td><strong>LUO Yi</strong></td>
-                        <td></td>
-                        <td>Enhanced functionality</td>
+                        <td><strong>21108269d</strong></td>
+                        <td>Enhanced functionality: <strong>Basic Fork Resolution.</strong></td>
                     </tr>
                     <tr>
                         <td><strong>YE Chenwei</strong></td>
