@@ -16,7 +16,8 @@ h2 {
 }
 
 .wallet-details-section,
-.get-secret-key-section {
+.get-secret-key-section,
+.balance-section {
     margin-bottom: 30px;
 }
 

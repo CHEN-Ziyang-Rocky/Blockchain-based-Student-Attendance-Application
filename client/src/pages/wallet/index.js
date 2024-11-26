@@ -7,6 +7,7 @@ const WalletAndSecretKey = () => {
     const [password, setPassword] = useState("");
     const [walletDetails, setWalletDetails] = useState(null);
     const [secretKey, setSecretKey] = useState("");
+    const [balance, setBalance] = useState(null); // state for balance
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
@@ -41,10 +42,21 @@ const WalletAndSecretKey = () => {
         }
     };
 
+    const handleFetchBalance = async () => {
+        try {
+            setError("");
+            const response = await axios.get(`http://localhost:3001/operator/${walletId}/balance`);
+            setBalance(response.data.balance);
+        } catch (err) {
+            setError("Failed to fetch balance.");
+        }
+    };
+
     return (
         <div className="wallet-and-secret-key-container">
             <h1 style={{ color: '#000' }}>Get Wallet and Secret Key</h1>
 
+            {/* Wallet Details Section */}
             <div className="wallet-details-section">
                 <h2 style={{ color: '#000' }}>Wallet Details</h2>
                 <input
@@ -66,6 +78,18 @@ const WalletAndSecretKey = () => {
                 )}
             </div>
 
+            {/* Balance Section */}
+            <div className="balance-section">
+                <h2 style={{ color: '#000' }}>Wallet Balance</h2>
+                <button onClick={handleFetchBalance}>Get Wallet Balance</button>
+                {balance !== null && (
+                    <div className="wallet-info">
+                        <p><strong>Balance:</strong> {balance} units</p>
+                    </div>
+                )}
+            </div>
+
+            {/* Retrieve Secret Key Section */}
             <div className="get-secret-key-section">
                 <h2 style={{ color: '#000' }}>Retrieve Secret Key</h2>
                 <form onSubmit={handleRetrieveSecretKey} className="get-secret-key-form">
@@ -92,6 +116,7 @@ const WalletAndSecretKey = () => {
                 )}
             </div>
 
+            {/* Error Section */}
             {error && <div className="error-message">{error}</div>}
         </div>
     );
