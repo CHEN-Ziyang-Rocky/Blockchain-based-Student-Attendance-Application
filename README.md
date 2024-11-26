@@ -75,4 +75,4 @@
 
 ### Record Querying
 
-Teachers (`12345678t`) can query the attendance records for an entire semester or specific weeks of a particular student, or retrieve the attendance list for an entire class. (So far, our database only has one teacher, and the teacher id is `12345678t`)
+Teachers (`12345678t`, `Korris`, and `XiaoBin`) can query the attendance records for an entire semester or specific weeks of a particular student, or retrieve the attendance list for an entire class. (So far, our database only has three teacher, and the teacher id is `12345678t`, `Korris`, and `XiaoBin`)
